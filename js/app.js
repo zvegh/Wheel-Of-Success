@@ -45,4 +45,29 @@ const addPhraseToDisplay = (arr) => {
 
 addPhraseToDisplay(phrases);
 
-const checkLetter = (button) => {};
+const checkLetter = (button) => {
+  const checkLetter = document.getElementsByClassName("letter");
+  let match = null;
+  for (let i = 0; i < checkLetter.length; i++) {
+    if (button.textContent === checkLetter[i]) {
+      checkLetter[i].className = "show";
+      match += checkLetter[i].textContent;
+    }
+  }
+  return match;
+};
+
+qwerty.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON") {
+    e.target.className = "chosen";
+  }
+  if (e.target.className === "chosen") {
+    e.target.disabled = "true";
+  }
+  let letter = checkLetter(e.target);
+  if (letter === null) {
+    missed += 1;
+    let hearts = document.querySelector("OL");
+    hearts.removeChild(li);
+  }
+});
