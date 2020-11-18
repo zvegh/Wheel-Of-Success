@@ -35,3 +35,5 @@ const getRandomPhraseAsArray = (arr) => {
 };
 
 getRandomPhraseAsArray(phrases);
+
+const checkLetter = (button) => {};
