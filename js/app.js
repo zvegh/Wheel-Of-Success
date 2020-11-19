@@ -51,7 +51,7 @@ const checkLetter = (button) => {
   let match = null;
   for (let i = 0; i < checkLetter.length; i++) {
     if (checkLetter[i].textContent.toLowerCase() === button.textContent) {
-      checkLetter[i].className = "show";
+      checkLetter[i].className += 'show';
       match += checkLetter[i].textContent;
       button.disabled = 'true';
     }
