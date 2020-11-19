@@ -8,6 +8,7 @@ const phrases = [
   "Madagascar",
   "My next destination is Ireland",
 ];
+let hearts = document.querySelectorAll('img');
 
 const overlay = document.querySelector("#overlay");
 const startButton = document.querySelector(".btn__reset");
@@ -49,7 +50,7 @@ const checkLetter = (button) => {
   const checkLetter = document.getElementsByClassName("letter");
   let match = null;
   for (let i = 0; i < checkLetter.length; i++) {
-    if (button.textContent === checkLetter[i]) {
+    if (checkLetter[i].textContent.toLowerCase() === checkLetter[i]) {
       checkLetter[i].className = "show";
       match += checkLetter[i].textContent;
     }
@@ -67,7 +68,21 @@ qwerty.addEventListener("click", (e) => {
   let letter = checkLetter(e.target);
   if (letter === null) {
     missed += 1;
-    let hearts = document.querySelector("OL");
-    hearts.removeChild(li);
+    hearts[missed - 1].src = 'images/lostHeart.png';
   }
 });
+
+const checkWin = () => {
+  const letters = document.getElementsByClassName('letter');
+  const show = document.getElementsByClassName('show');
+  if (letters.length === show.length) {
+    overlay.className = 'win';
+    overlay.childNodes[0].textContent = 'You won!';
+    overlay.style.display = 'flex';
+  }
+  if (missed > 4) {
+    overlay.className = 'lose';
+    overlay.childNodes[0].textContent = 'You lost!';
+    overlay.style.display = 'flex';
+  }
+}
