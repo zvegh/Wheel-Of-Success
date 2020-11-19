@@ -50,9 +50,10 @@ const checkLetter = (button) => {
   const checkLetter = document.getElementsByClassName("letter");
   let match = null;
   for (let i = 0; i < checkLetter.length; i++) {
-    if (checkLetter[i].textContent.toLowerCase() === checkLetter[i]) {
+    if (checkLetter[i].textContent.toLowerCase() === button.textContent) {
       checkLetter[i].className = "show";
       match += checkLetter[i].textContent;
+      button.disabled = 'true';
     }
   }
   return match;
