@@ -71,19 +71,20 @@ qwerty.addEventListener("click", (e) => {
     missed += 1;
     hearts[missed - 1].src = 'images/lostHeart.png';
   }
+  checkWin();
 });
 
 const checkWin = () => {
   const letters = document.getElementsByClassName('letter');
   const show = document.getElementsByClassName('show');
+  let h2 = document.querySelector('.title');
   if (letters.length === show.length) {
     overlay.className = 'win';
-    overlay.childNodes[0].textContent = 'You won!';
+    h2.textContent = 'You won!';
     overlay.style.display = 'flex';
-  }
-  if (missed > 4) {
+  } else if (missed > 4) {
     overlay.className = 'lose';
-    overlay.childNodes[0].textContent = 'You lost!';
+    h2.textContent = 'You lost!';
     overlay.style.display = 'flex';
   }
 }
