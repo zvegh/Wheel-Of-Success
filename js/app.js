@@ -87,4 +87,4 @@ const checkWin = () => {
     h2.textContent = 'You lost!';
     overlay.style.display = 'flex';
   }
-}
+};
